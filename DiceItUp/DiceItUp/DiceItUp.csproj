@@ -128,7 +128,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlayerProfilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,6 +186,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\Main.css" />
+    <Content Include="Content\images\blur-board-game-cards-776657.jpg" />
+    <Content Include="Content\images\board-game.jpg" />
+    <Content Include="Content\images\fusball.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -232,6 +238,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\PlayerProfiles\Create.cshtml" />
+    <Content Include="Views\PlayerProfiles\Delete.cshtml" />
+    <Content Include="Views\PlayerProfiles\Details.cshtml" />
+    <Content Include="Views\PlayerProfiles\Edit.cshtml" />
+    <Content Include="Views\PlayerProfiles\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\LoginRegister.cshtml" />
+    <Content Include="Views\Account\ProfileRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

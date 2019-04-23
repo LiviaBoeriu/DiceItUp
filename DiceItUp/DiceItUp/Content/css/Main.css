@@ -1,0 +1,42 @@
+﻿.container-fluid {
+    padding: 0;
+    min-height: 500px;
+}
+
+/* _Layout */
+.navbar {
+    height: 100px;
+    background-color: dodgerblue;
+}
+
+.navbar-brand {
+    font-size: 36px;
+    color: white !important;
+}
+
+.navbar-brand p {
+    margin: 0;
+}
+
+
+/* Account/Index */
+.register-template {
+    min-height: inherit;
+    display: flex;
+    background-image: url("../images/board-game.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.register-template > * {
+    padding: 50px;
+}
+
+.register-template .register-description {
+    width: 60%;
+}
+
+.register-template .register-form {
+    width: 40%;
+}

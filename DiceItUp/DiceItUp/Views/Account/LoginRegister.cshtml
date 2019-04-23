@@ -1,0 +1,8 @@
+﻿@model DiceItUp.Models.PlayerLogin
+
+@using (Html.BeginForm("RegisterLogin", "Account", FormMethod.Post))
+{
+    @Html.TextBoxFor(model => model.email)
+    @Html.PasswordFor(model => model.password)
+    <input type="submit" />
+}
