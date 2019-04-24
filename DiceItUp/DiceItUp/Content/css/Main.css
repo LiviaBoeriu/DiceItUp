@@ -1,10 +1,16 @@
-﻿.container-fluid {
+﻿body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.container-fluid {
     padding: 0;
-    min-height: 500px;
+    height: calc(100% - 100px);
 }
 
 /* _Layout */
 .navbar {
+    padding: 0px 50px;
     height: 100px;
     background-color: dodgerblue;
 }
@@ -21,7 +27,7 @@
 
 /* Account/Index */
 .register-template {
-    min-height: inherit;
+    height: 100%;
     display: flex;
     background-image: url("../images/board-game.jpg");
     background-size: cover;
