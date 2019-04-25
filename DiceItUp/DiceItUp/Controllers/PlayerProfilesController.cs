@@ -33,6 +33,10 @@ namespace DiceItUp.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewData["Title"] = db.ProfileTitles.FirstOrDefault(row => row.profile_level == playerProfile.profile_level).title;
+            ViewData["City"] = db.Locations.FirstOrDefault(row => row.location_id == playerProfile.location_id).city;
+            ViewData["Gender"] = playerProfile.gender.ToUpper() == "M" ? "Male" : "Female";
             return View(playerProfile);
         }
 
@@ -87,19 +91,19 @@ namespace DiceItUp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "player_id,first_name,last_name,date_of_birth,gender,location_id,profile_level,description,feedback")] PlayerProfile playerProfile)
+        public ActionResult Edit([Bind(Exclude = "profile_level,date_of_birth,location_id,feedback")] PlayerProfile playerProfile)
         {
             if (ModelState.IsValid)
             {
+                int playerId = Int32.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
+                playerProfile.player_id = playerId;
+
                 db.Entry(playerProfile).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = playerProfile.player_id});
             }
-            ViewBag.location_id = new SelectList(db.Locations, "location_id", "zip_code", playerProfile.location_id);
-            ViewBag.player_id = new SelectList(db.PlayerLogins, "player_id", "email", playerProfile.player_id);
-            ViewBag.profile_level = new SelectList(db.ProfileTitles, "profile_level", "title", playerProfile.profile_level);
-            return View(playerProfile);
+            
+            return View();
         }
 
         // GET: PlayerProfiles/Delete/5

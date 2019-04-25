@@ -1,105 +1,55 @@
 ﻿@model DiceItUp.Models.PlayerProfile
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+<div class="row player-profile">
+    <form action="/PlayerProfiles/Edit/@Model.player_id" method="post" class="row">
+        <div class="col-4 card-column">
+            <div class="card" style="width: 18rem;">
+                <h5 class="player-title"> @ViewData["Title"]</h5>
+                <img src="https://images.unsplash.com/photo-1515160813423-b851dc54a427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=722&q=80" class="card-img-top" height="300" width="300" align="middle">
+                <div class="card-body">
+                    <h5 class="card-title">First name: <input type="text" class="form-control" name="first_name" id="firstName" value=" @Model.first_name"></h5>
+                    <h5 class="card-title">Last name: <input type="text" class="form-control" name="last_name" id="lastName" value=" @Model.last_name"></h5>
+                    <p class="card-text">City: @ViewData["City"]</p>
+                    <div class="card-text">
+                        Gender:
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="femaleGender" value="F">
+                            <label class="form-check-label" for="femaleGender">
+                                Female
+                            </label>
+                        </div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    
-    
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>PlayerProfile</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.player_id)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.first_name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.last_name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.date_of_birth, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.date_of_birth, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.date_of_birth, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.gender, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.gender, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.location_id, "location_id", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("location_id", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.location_id, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.profile_level, "profile_level", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("profile_level", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.profile_level, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.feedback, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.feedback, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.feedback, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="maleGender" value="M">
+                            <label class="form-check-label" for="maleGender">
+                                Male
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
-</body>
-</html>
+
+        @* container for about me *@
+        <div class="col-8">
+            <div class="description-section">
+                <h5>About me </h5>
+                <div class="form-group">
+                    <textarea class="form-control" name="description" rows="5" style="resize: none">@Model.description</textarea>
+                </div>
+            </div>
+
+            @*<div class="description-section">
+            <h5>Spilpraeferencer</h5>
+
+            </div>
+
+            <div class="description-section">
+                <h5>Top 5 spil</h5>
+
+            </div>*@
+            <button type="submit" class="btn btn-primary mb-2">Update profile</button>
+        </div>
+    </form>    
+</div>

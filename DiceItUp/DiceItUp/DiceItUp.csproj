@@ -238,14 +238,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\PlayerProfiles\Create.cshtml" />
-    <Content Include="Views\PlayerProfiles\Delete.cshtml" />
-    <Content Include="Views\PlayerProfiles\Details.cshtml" />
-    <Content Include="Views\PlayerProfiles\Edit.cshtml" />
-    <Content Include="Views\PlayerProfiles\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\LoginRegister.cshtml" />
     <Content Include="Views\Account\ProfileRegister.cshtml" />
+    <Content Include="Views\PlayerProfiles\Details.cshtml" />
+    <Content Include="Views\PlayerProfiles\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

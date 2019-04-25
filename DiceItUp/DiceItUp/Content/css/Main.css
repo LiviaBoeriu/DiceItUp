@@ -8,6 +8,10 @@
     height: calc(100% - 100px);
 }
 
+.row {
+    margin: 50px 0px;
+}
+
 /* _Layout */
 .navbar {
     padding: 0px 50px;
@@ -45,4 +49,27 @@
 
 .register-template .register-form {
     width: 40%;
+}
+
+/*PlayerProfiles/Details*/
+.player-profile .card-column .card {
+    margin-left: calc(50% - 9rem);
+}
+
+.player-title {
+    text-align: center;
+}
+
+/*PlayerProfiles/Edit*/
+.player-profile .card .card-title {
+    display: flex;
+    align-items: center;
+}
+
+.player-profile form {
+    width: 100%;
+}
+
+.player-profile .card .card-title input {
+    margin-left: 10px;
 }

@@ -43,7 +43,7 @@ namespace DiceItUp.Controllers
                 
                 db.PlayerProfiles.Add(playerProfile);
                 db.SaveChanges();
-                return RedirectToAction("Register");
+                return RedirectToAction("Details", "PlayerProfiles", new { id = playerProfile.player_id});
             }
 
             return View();

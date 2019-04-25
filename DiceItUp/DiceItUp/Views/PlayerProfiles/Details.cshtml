@@ -1,98 +1,33 @@
 ﻿@model DiceItUp.Models.PlayerProfile
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>PlayerProfile</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.first_name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.first_name)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.last_name)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.last_name)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.date_of_birth)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.date_of_birth)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.gender)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.gender)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.description)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.description)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.feedback)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.feedback)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Location.zip_code)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Location.zip_code)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.PlayerLogin.email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.PlayerLogin.email)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.ProfileTitle.title)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.ProfileTitle.title)
-            </dd>
-    
-        </dl>
+<div class="row player-profile">
+    <div class="col-4 card-column">
+        <div class="card" style="width: 18rem;">
+            <h5 class="player-title">  @ViewData["Title"] </h5>
+            <img src="https://images.unsplash.com/photo-1515160813423-b851dc54a427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=722&q=80" class="card-img-top" height="300" width="300" align="middle">
+            <div class="card-body">
+                <h5 class="card-title">Name: @Model.first_name</h5>
+                <p class="card-text">City: @ViewData["City"]</p>
+                <p class="card-text">Gender: @ViewData["Gender"]</p>
+            </div>
+        </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.player_id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+
+    @* container for about me *@
+    <div class="col-8">
+        <div class="description-section">
+            <h5>About me </h5>
+            <p>@Model.description</p>
+        </div>
+
+        @*<div class="description-section">
+            <h5>Spilpraeferencer</h5>
+
+        </div>
+
+        <div class="description-section">
+            <h5>Top 5 spil</h5>
+
+        </div>*@
+    </div>
+</div>
