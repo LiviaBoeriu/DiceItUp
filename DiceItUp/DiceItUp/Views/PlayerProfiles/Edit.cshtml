@@ -3,10 +3,10 @@
 
 <div class="row player-profile">
     <form action="/PlayerProfiles/Edit/@Model.player_id" method="post" class="row">
-        <div class="col-4 card-column">
-            <div class="card" style="width: 18rem;">
+        <div class="col-4 offset-2 card-column">
+            <div class="card" style="width: 24rem;">
                 <h5 class="player-title"> @ViewData["Title"]</h5>
-                <img src="https://images.unsplash.com/photo-1515160813423-b851dc54a427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=722&q=80" class="card-img-top" height="300" width="300" align="middle">
+                <img src="https://images.unsplash.com/photo-1515160813423-b851dc54a427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=722&q=80" class="card-img-top" height="360" width="300" align="middle">
                 <div class="card-body">
                     <h5 class="card-title">First name: <input type="text" class="form-control" name="first_name" id="firstName" value=" @Model.first_name"></h5>
                     <h5 class="card-title">Last name: <input type="text" class="form-control" name="last_name" id="lastName" value=" @Model.last_name"></h5>
@@ -32,7 +32,7 @@
         </div>
 
         @* container for about me *@
-        <div class="col-8">
+        <div class="col-4">
             <div class="description-section">
                 <h5>About me </h5>
                 <div class="form-group">

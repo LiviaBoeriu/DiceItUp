@@ -1,10 +1,10 @@
 ﻿@model DiceItUp.Models.PlayerProfile
 
 <div class="row player-profile">
-    <div class="col-4 card-column">
-        <div class="card" style="width: 18rem;">
+    <div class="col-4 offset-2 card-column">
+        <div class="card" style="width: 24rem;">
             <h5 class="player-title">  @ViewData["Title"] </h5>
-            <img src="https://images.unsplash.com/photo-1515160813423-b851dc54a427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=722&q=80" class="card-img-top" height="300" width="300" align="middle">
+            <img src="https://images.unsplash.com/photo-1515160813423-b851dc54a427?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=722&q=80" class="card-img-top" height="400" width="300" align="middle">
             <div class="card-body">
                 <h5 class="card-title">Name: @Model.first_name</h5>
                 <p class="card-text">City: @ViewData["City"]</p>
@@ -14,7 +14,7 @@
     </div>
 
     @* container for about me *@
-    <div class="col-8">
+    <div class="col-4">
         <div class="description-section">
             <h5>About me </h5>
             <p>@Model.description</p>

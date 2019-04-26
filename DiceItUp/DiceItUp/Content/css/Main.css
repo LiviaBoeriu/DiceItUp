@@ -8,10 +8,6 @@
     height: calc(100% - 100px);
 }
 
-.row {
-    margin: 50px 0px;
-}
-
 /* _Layout */
 .navbar {
     padding: 0px 50px;
@@ -28,7 +24,18 @@
     margin: 0;
 }
 
+/*Account/ProfileRegister*/
+.gender-form-group {
+    align-items: center;
+}
 
+.gender-form-group label {
+    margin: 0;
+}
+
+.gender-form-group .form-check-inline {
+    margin-left: 20px;
+}
 /* Account/Index */
 .register-template {
     height: 100%;
@@ -51,9 +58,13 @@
     width: 40%;
 }
 
+.register-template .register-form .row {
+    margin: 0 0 16px 0;
+}
+
 /*PlayerProfiles/Details*/
 .player-profile .card-column .card {
-    margin-left: calc(50% - 9rem);
+    margin-left: calc(50% - 12rem);
 }
 
 .player-title {
@@ -70,6 +81,18 @@
     width: 100%;
 }
 
+/*.player-profile .card-img-top {
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}*/
+
+.player-profile {
+    margin: 50px 0px;
+}
+
 .player-profile .card .card-title input {
     margin-left: 10px;
+    width: 64%;
 }
