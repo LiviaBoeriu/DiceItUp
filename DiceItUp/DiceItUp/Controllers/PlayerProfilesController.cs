@@ -81,9 +81,8 @@ namespace DiceItUp.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.location_id = new SelectList(db.Locations, "location_id", "zip_code", playerProfile.location_id);
-            ViewBag.player_id = new SelectList(db.PlayerLogins, "player_id", "email", playerProfile.player_id);
-            ViewBag.profile_level = new SelectList(db.ProfileTitles, "profile_level", "title", playerProfile.profile_level);
+
+            ViewBag.locations = db.Locations.ToList();
             return View(playerProfile);
         }
 
@@ -91,13 +90,10 @@ namespace DiceItUp.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit([Bind(Exclude = "profile_level,date_of_birth,location_id,feedback")] PlayerProfile playerProfile)
+        public ActionResult Edit([Bind(Include = "player_id,first_name,last_name,date_of_birth,gender,location_id,profile_level,description,feedback,avatar_path")] PlayerProfile playerProfile)
         {
             if (ModelState.IsValid)
             {
-                int playerId = Int32.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
-                playerProfile.player_id = playerId;
-
                 db.Entry(playerProfile).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Details", new { id = playerProfile.player_id});

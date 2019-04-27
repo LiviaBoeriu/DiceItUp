@@ -187,6 +187,16 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\Main.css" />
+    <Content Include="Content\images\avatars\adam.png" />
+    <Content Include="Content\images\avatars\anjali.png" />
+    <Content Include="Content\images\avatars\arjun.png" />
+    <Content Include="Content\images\avatars\jorge.png" />
+    <Content Include="Content\images\avatars\maya.png" />
+    <Content Include="Content\images\avatars\rahul.png" />
+    <Content Include="Content\images\avatars\sadona.png" />
+    <Content Include="Content\images\avatars\sandy.png" />
+    <Content Include="Content\images\avatars\sid.png" />
+    <Content Include="Content\images\avatars\steve.png" />
     <Content Include="Content\images\blur-board-game-cards-776657.jpg" />
     <Content Include="Content\images\board-game.jpg" />
     <Content Include="Content\images\fusball.jpg" />

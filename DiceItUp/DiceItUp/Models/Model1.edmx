@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DiceItUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DiceItUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Game">
           <Key>
             <PropertyRef Name="game_id" />
@@ -91,6 +91,7 @@
           <Property Name="profile_level" Type="int" />
           <Property Name="description" Type="varchar" MaxLength="250" />
           <Property Name="feedback" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="avatar_path" Type="varchar" MaxLength="60" />
         </EntityType>
         <EntityType Name="PlayerRelationship">
           <Key>
@@ -402,8 +403,7 @@
             <End Role="PlayerTopGames" EntitySet="PlayerTopGames" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiceItUpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -512,6 +512,7 @@
           <NavigationProperty Name="Location" Relationship="Self.FK__PlayerPro__locat__4F7CD00D" FromRole="PlayerProfile" ToRole="Location" />
           <NavigationProperty Name="PlayerLogin" Relationship="Self.FK__PlayerPro__playe__4E88ABD4" FromRole="PlayerProfile" ToRole="PlayerLogin" />
           <NavigationProperty Name="ProfileTitle" Relationship="Self.FK__PlayerPro__profi__5070F446" FromRole="PlayerProfile" ToRole="ProfileTitle" />
+          <Property Name="avatar_path" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PlayerRelationship">
           <Key>
@@ -848,6 +849,7 @@
           <EntitySetMapping Name="PlayerProfiles">
             <EntityTypeMapping TypeName="DiceItUpModel.PlayerProfile">
               <MappingFragment StoreEntitySet="PlayerProfile">
+                <ScalarProperty Name="avatar_path" ColumnName="avatar_path" />
                 <ScalarProperty Name="player_id" ColumnName="player_id" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />

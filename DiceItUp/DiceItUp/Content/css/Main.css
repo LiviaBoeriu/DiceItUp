@@ -72,27 +72,32 @@
 }
 
 /*PlayerProfiles/Edit*/
-.player-profile .card .card-title {
+.player-profile .card .card-title,
+.player-profile .card .city-field {
     display: flex;
     align-items: center;
+}
+
+.player-profile .card .city-field select{
+    margin-left: 10px;
 }
 
 .player-profile form {
     width: 100%;
 }
 
-/*.player-profile .card-img-top {
-    height: 300px;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-}*/
+.player-profile .card-img-top {
+    height: 200px;
+    width: 200px;
+    margin-left: calc(50% - 100px);
+}
 
 .player-profile {
     margin: 50px 0px;
 }
 
-.player-profile .card .card-title input {
+.player-profile .card .card-title input,
+.player-profile .card .card-title select {
     margin-left: 10px;
     width: 64%;
 }

@@ -23,6 +23,7 @@ namespace DiceItUp.Models
         public Nullable<int> profile_level { get; set; }
         public string description { get; set; }
         public Nullable<decimal> feedback { get; set; }
+        public string avatar_path { get; set; }
     
         public virtual Location Location { get; set; }
         public virtual PlayerLogin PlayerLogin { get; set; }
