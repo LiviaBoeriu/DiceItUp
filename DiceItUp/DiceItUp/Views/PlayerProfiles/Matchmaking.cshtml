@@ -1,0 +1,33 @@
+﻿<div class="matchmaking-description">
+    <h4>Velkommen til Match Arena!</h4>
+    <p> Her kan du finde andre spillere at matche med</p>
+    <p> Rul med terningerne for at finde matches!</p>
+    <button type="button" class="btn btn-primary" id="showPlayers">Match me!</button>
+</div>
+
+<div class="row" id="matchmakingPlayersSection" style="display: none;">
+    <div class="col-10 offset-1 matchmaking-players">
+        @foreach (var player in ViewBag.Players)
+        {
+        <div class="card" style="width: 18rem;">
+            <h5 class="player-title">  @player.ProfileTitle.title </h5>
+            <img src="~/Content/images/avatars/@player.avatar_path" class="card-img-top" align="middle">
+            <div class="card-body">
+                <h5 class="card-title">Name: @player.first_name <span>@player.last_name</span></h5>
+                <p class="card-text">City: @player.Location.city</p>
+            </div>
+            <button type="button" class="btn btn-primary match-button">Fight!</button>
+        </div>
+        }
+    </div>   
+</div>
+
+<script>
+    var playersSection = document.getElementById("matchmakingPlayersSection");
+    var showPlayers = document.getElementById("showPlayers");
+
+    showPlayers.addEventListener('click', function () {
+        playersSection.style.display = 'flex';
+    });
+</script>
+

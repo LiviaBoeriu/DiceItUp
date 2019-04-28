@@ -3,11 +3,11 @@
 <div class="row player-profile">
     <div class="col-4 offset-2 card-column">
         <div class="card" style="width: 24rem;">
-            <h5 class="player-title">  @ViewData["Title"] </h5>
+            <h5 class="player-title">  @Model.ProfileTitle.title </h5>
             <img src="~/Content/images/avatars/@Model.avatar_path" class="card-img-top" align="middle">
             <div class="card-body">
                 <h5 class="card-title">Name: @Model.first_name</h5>
-                <p class="card-text">City: @ViewData["City"]</p>
+                <p class="card-text">City: @Model.Location.city</p>
                 <p class="card-text">Gender: @ViewData["Gender"]</p>
             </div>
         </div>

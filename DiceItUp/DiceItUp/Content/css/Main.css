@@ -8,6 +8,11 @@
     height: calc(100% - 100px);
 }
 
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
 /* _Layout */
 .navbar {
     padding: 0px 50px;
@@ -86,10 +91,10 @@
     width: 100%;
 }
 
-.player-profile .card-img-top {
+.card-img-top {
+    margin-left: calc(50% - 100px);
     height: 200px;
     width: 200px;
-    margin-left: calc(50% - 100px);
 }
 
 .player-profile {
@@ -100,4 +105,35 @@
 .player-profile .card .card-title select {
     margin-left: 10px;
     width: 64%;
+}
+
+.matchmaking-description {
+    padding-top: 50px;
+    padding-bottom: 80px;
+}
+
+.matchmaking-description p,
+.matchmaking-description h4 {
+    text-align: center;
+}
+
+.matchmaking-description h4 {
+    margin-bottom: 16px;
+}
+
+.matchmaking-description button {
+    position: absolute;
+    width: 120px;
+    left: calc(50% - 60px);
+}
+
+.matchmaking-players {
+    display: flex;
+    justify-content: space-around;
+}
+
+.matchmaking-players .card .match-button {
+    width: 100px;
+    margin-left: calc(50% - 50px);
+    margin-bottom: 10px;
 }

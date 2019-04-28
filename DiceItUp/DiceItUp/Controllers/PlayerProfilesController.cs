@@ -33,9 +33,7 @@ namespace DiceItUp.Controllers
             {
                 return HttpNotFound();
             }
-
-            ViewData["Title"] = db.ProfileTitles.FirstOrDefault(row => row.profile_level == playerProfile.profile_level).title;
-            ViewData["City"] = db.Locations.FirstOrDefault(row => row.location_id == playerProfile.location_id).city;
+            
             ViewData["Gender"] = playerProfile.gender.ToUpper() == "M" ? "Male" : "Female";
             return View(playerProfile);
         }
@@ -135,6 +133,15 @@ namespace DiceItUp.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Matchmaking(int id)
+        {
+            PlayerProfile playerProfile = db.PlayerProfiles.Find(id);
+
+            ViewBag.Players = db.PlayerProfiles.ToList().Where(row => row.location_id == playerProfile.location_id);
+             
+            return View(playerProfile);
         }
     }
 }
