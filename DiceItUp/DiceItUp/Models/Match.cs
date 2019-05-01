@@ -18,7 +18,10 @@ namespace DiceItUp.Models
         public Nullable<int> first_player_id { get; set; }
         public Nullable<int> second_player_id { get; set; }
         public string match_state { get; set; }
+        public string first_player_state { get; set; }
+        public string second_player_state { get; set; }
     
         public virtual PlayerLogin PlayerLogin { get; set; }
+        public virtual PlayerProfile PlayerProfile { get; set; }
     }
 }

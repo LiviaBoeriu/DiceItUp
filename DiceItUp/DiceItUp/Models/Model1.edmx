@@ -36,6 +36,8 @@
           <Property Name="first_player_id" Type="int" />
           <Property Name="second_player_id" Type="int" />
           <Property Name="match_state" Type="varchar" MaxLength="20" />
+          <Property Name="first_player_state" Type="varchar" MaxLength="10" />
+          <Property Name="second_player_state" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Meetup">
           <Key>
@@ -126,6 +128,18 @@
             </Principal>
             <Dependent Role="Game">
               <PropertyRef Name="genre_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Match__first_pla__14270015">
+          <End Role="PlayerProfile" Type="Self.PlayerProfile" Multiplicity="0..1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerProfile">
+              <PropertyRef Name="player_id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="first_player_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -338,6 +352,10 @@
             <End Role="Genre" EntitySet="Genre" />
             <End Role="Game" EntitySet="Game" />
           </AssociationSet>
+          <AssociationSet Name="FK__Match__first_pla__14270015" Association="Self.FK__Match__first_pla__14270015">
+            <End Role="PlayerProfile" EntitySet="PlayerProfile" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
           <AssociationSet Name="FK__Match__second_pl__5DCAEF64" Association="Self.FK__Match__second_pl__5DCAEF64">
             <End Role="PlayerLogin" EntitySet="PlayerLogin" />
             <End Role="Match" EntitySet="Match" />
@@ -447,6 +465,9 @@
           <Property Name="second_player_id" Type="Int32" />
           <Property Name="match_state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PlayerLogin" Relationship="Self.FK__Match__second_pl__5DCAEF64" FromRole="Match" ToRole="PlayerLogin" />
+          <Property Name="first_player_state" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="second_player_state" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PlayerProfile" Relationship="DiceItUpModel.FK__Match__first_pla__14270015" FromRole="Match" ToRole="PlayerProfile" />
         </EntityType>
         <EntityType Name="Meetup">
           <Key>
@@ -513,6 +534,7 @@
           <NavigationProperty Name="PlayerLogin" Relationship="Self.FK__PlayerPro__playe__4E88ABD4" FromRole="PlayerProfile" ToRole="PlayerLogin" />
           <NavigationProperty Name="ProfileTitle" Relationship="Self.FK__PlayerPro__profi__5070F446" FromRole="PlayerProfile" ToRole="ProfileTitle" />
           <Property Name="avatar_path" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Matches" Relationship="DiceItUpModel.FK__Match__first_pla__14270015" FromRole="PlayerProfile" ToRole="Match" />
         </EntityType>
         <EntityType Name="PlayerRelationship">
           <Key>
@@ -768,7 +790,23 @@
             <End Role="Game" EntitySet="Games" />
             <End Role="PlayerLogin" EntitySet="PlayerLogins" />
           </AssociationSet>
+          <AssociationSet Name="FK__Match__first_pla__14270015" Association="DiceItUpModel.FK__Match__first_pla__14270015">
+            <End Role="PlayerProfile" EntitySet="PlayerProfiles" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK__Match__first_pla__14270015">
+          <End Type="DiceItUpModel.PlayerProfile" Role="PlayerProfile" Multiplicity="0..1" />
+          <End Type="DiceItUpModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerProfile">
+              <PropertyRef Name="player_id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="first_player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -804,6 +842,8 @@
           <EntitySetMapping Name="Matches">
             <EntityTypeMapping TypeName="DiceItUpModel.Match">
               <MappingFragment StoreEntitySet="Match">
+                <ScalarProperty Name="second_player_state" ColumnName="second_player_state" />
+                <ScalarProperty Name="first_player_state" ColumnName="first_player_state" />
                 <ScalarProperty Name="match_id" ColumnName="match_id" />
                 <ScalarProperty Name="first_player_id" ColumnName="first_player_id" />
                 <ScalarProperty Name="second_player_id" ColumnName="second_player_id" />

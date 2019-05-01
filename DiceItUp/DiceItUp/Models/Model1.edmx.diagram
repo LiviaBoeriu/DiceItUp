@@ -30,6 +30,7 @@
         <AssociationConnector Association="DiceItUpModel.FK__PlayerPro__profi__5070F446" ManuallyRouted="false" />
         <AssociationConnector Association="DiceItUpModel.PlayerGamePreferences" ManuallyRouted="false" />
         <AssociationConnector Association="DiceItUpModel.PlayerTopGames" ManuallyRouted="false" />
+        <AssociationConnector Association="DiceItUpModel.FK__Match__first_pla__14270015" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

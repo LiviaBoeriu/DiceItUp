@@ -14,6 +14,12 @@ namespace DiceItUp.Models
     
     public partial class PlayerProfile
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PlayerProfile()
+        {
+            this.Matches = new HashSet<Match>();
+        }
+    
         public int player_id { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
@@ -28,5 +34,7 @@ namespace DiceItUp.Models
         public virtual Location Location { get; set; }
         public virtual PlayerLogin PlayerLogin { get; set; }
         public virtual ProfileTitle ProfileTitle { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Match> Matches { get; set; }
     }
 }

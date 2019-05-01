@@ -139,9 +139,24 @@ namespace DiceItUp.Controllers
         {
             PlayerProfile playerProfile = db.PlayerProfiles.Find(id);
 
-            ViewBag.Players = db.PlayerProfiles.ToList().Where(row => row.location_id == playerProfile.location_id);
+            ViewBag.Players = db.PlayerProfiles.ToList().Where(row => row.location_id == playerProfile.location_id && row.player_id != id);
              
             return View(playerProfile);
+        }
+
+        [HttpPost]
+        public void Invite(int playerId, int opponentId) {
+            int someId = opponentId;
+
+            var match = new Match();
+            match.first_player_id = playerId;
+            match.second_player_id = opponentId;
+            match.match_state = "Pending";
+            match.first_player_state = "Accept";
+            match.second_player_state = "Pending";
+
+            db.Matches.Add(match);
+            db.SaveChanges();
         }
     }
 }
