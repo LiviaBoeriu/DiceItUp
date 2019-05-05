@@ -12,7 +12,7 @@ namespace DiceItUp.Controllers
 {
     public class AccountController : Controller
     {
-        private DiceItUpEntities db = new DiceItUpEntities();
+        private DiceItUpEntities1 db = new DiceItUpEntities1();
 
         // GET: Account
         public ActionResult Register(int? id) {
@@ -35,15 +35,17 @@ namespace DiceItUp.Controllers
 
         // POST: Account/RegisterProfile/Id
         [HttpPost]
-        public ActionResult RegisterProfile([Bind(Include = "first_name, last_name, gender")] PlayerProfile playerProfile)
+        public ActionResult RegisterProfile([Bind(Include = "first_name, last_name, gender, location_id")] PlayerProfile playerProfile)
         {
             if (ModelState.IsValid)
             {
                 playerProfile.player_id = Int32.Parse(Url.RequestContext.RouteData.Values["id"].ToString());
-                
+                playerProfile.profile_level = 1;
+                playerProfile.avatar_path = "sandy.png";
+
                 db.PlayerProfiles.Add(playerProfile);
                 db.SaveChanges();
-                return RedirectToAction("Details", "PlayerProfiles", new { id = playerProfile.player_id});
+                return RedirectToAction("Details", "PlayerProfiles", new { id = playerProfile.player_id });
             }
 
             return View();

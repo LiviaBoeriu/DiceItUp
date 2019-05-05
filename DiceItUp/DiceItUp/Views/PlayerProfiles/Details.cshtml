@@ -11,6 +11,16 @@
                 <p class="card-text">Gender: @ViewData["Gender"]</p>
             </div>
         </div>
+
+        <div class="card" style="width: 24rem; margin-top: 40px;">
+            @foreach (var match in ViewBag.Matches)
+            {
+            <div class="match">
+                <span>Opponent: @match.second_player_id</span>
+                <span>Match state: @match.match_state</span>
+            </div>
+            }
+        </div>
     </div>
 
     @* container for about me *@

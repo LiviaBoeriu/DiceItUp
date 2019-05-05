@@ -13,10 +13,10 @@ namespace DiceItUp.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DiceItUpEntities : DbContext
+    public partial class DiceItUpEntities1 : DbContext
     {
-        public DiceItUpEntities()
-            : base("name=DiceItUpEntities")
+        public DiceItUpEntities1()
+            : base("name=DiceItUpEntities1")
         {
         }
     

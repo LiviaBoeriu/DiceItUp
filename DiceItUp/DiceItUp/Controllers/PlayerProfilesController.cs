@@ -12,7 +12,7 @@ namespace DiceItUp.Controllers
 {
     public class PlayerProfilesController : Controller
     {
-        private DiceItUpEntities db = new DiceItUpEntities();
+        private DiceItUpEntities1 db = new DiceItUpEntities1();
 
         // GET: PlayerProfiles
         public ActionResult Index()
@@ -34,6 +34,7 @@ namespace DiceItUp.Controllers
                 return HttpNotFound();
             }
             
+            ViewBag.Matches = db.Matches.ToList().Where(row => row.first_player_id == id && row.match_state.ToLower() != "rejected");
             ViewData["Gender"] = playerProfile.gender.ToUpper() == "M" ? "Male" : "Female";
             return View(playerProfile);
         }
@@ -140,7 +141,7 @@ namespace DiceItUp.Controllers
             PlayerProfile playerProfile = db.PlayerProfiles.Find(id);
 
             ViewBag.Players = db.PlayerProfiles.ToList().Where(row => row.location_id == playerProfile.location_id && row.player_id != id);
-             
+            
             return View(playerProfile);
         }
 

@@ -87,6 +87,18 @@
     margin-left: 10px;
 }
 
+.player-profile .card .match {
+    display: flex;
+    padding: 10px;
+    margin: 0px 20px;
+    justify-content: space-around;
+    border-bottom: 1px solid #cccccc;
+}
+
+.player-profile .card .match:last-child {
+    border-bottom: none;
+}
+
 .player-profile form {
     width: 100%;
 }

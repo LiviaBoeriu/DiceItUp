@@ -17,7 +17,6 @@ namespace DiceItUp.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PlayerLogin()
         {
-            this.Matches = new HashSet<Match>();
             this.Meetups = new HashSet<Meetup>();
             this.MeetupParticipants = new HashSet<MeetupParticipant>();
             this.PlayerRelationships = new HashSet<PlayerRelationship>();
@@ -30,8 +29,6 @@ namespace DiceItUp.Models
         public string email { get; set; }
         public string password { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Match> Matches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Meetup> Meetups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
