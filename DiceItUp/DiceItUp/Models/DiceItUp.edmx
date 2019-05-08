@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DiceItUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DiceItUpModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Game">
           <Key>
             <PropertyRef Name="game_id" />
@@ -311,6 +311,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Match_Profile">
+          <End Role="PlayerLogin" Type="Self.PlayerLogin" Multiplicity="0..1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerLogin">
+              <PropertyRef Name="player_id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="first_player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Match_SecondProfile">
+          <End Role="PlayerLogin" Type="Self.PlayerLogin" Multiplicity="0..1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerLogin">
+              <PropertyRef Name="player_id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="second_player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DiceItUpModelStoreContainer">
           <EntitySet Name="Game" EntityType="Self.Game" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Genre" EntityType="Self.Genre" Schema="dbo" store:Type="Tables" />
@@ -388,9 +412,16 @@
             <End Role="PlayerLogin" EntitySet="PlayerLogin" />
             <End Role="PlayerTopGames" EntitySet="PlayerTopGames" />
           </AssociationSet>
+          <AssociationSet Name="FK_Match_Profile" Association="Self.FK_Match_Profile">
+            <End Role="PlayerLogin" EntitySet="PlayerLogin" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Match_SecondProfile" Association="Self.FK_Match_SecondProfile">
+            <End Role="PlayerLogin" EntitySet="PlayerLogin" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiceItUpModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -435,6 +466,8 @@
           <Property Name="match_state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="first_player_state" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="second_player_state" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FirstPlayer" Relationship="DiceItUpModel.FK_Match_Profile" FromRole="Match" ToRole="PlayerLogin" />
+          <NavigationProperty Name="SecondPlayer" Relationship="DiceItUpModel.FK_Match_SecondProfile" FromRole="Match" ToRole="PlayerLogin" />
         </EntityType>
         <EntityType Name="Meetup">
           <Key>
@@ -482,6 +515,8 @@
           <NavigationProperty Name="PlayerRelationships1" Relationship="Self.FK__PlayerRel__respo__6D0D32F4" FromRole="PlayerLogin" ToRole="PlayerRelationship" />
           <NavigationProperty Name="Genres" Relationship="Self.PlayerGamePreferences" FromRole="PlayerLogin" ToRole="Genre" />
           <NavigationProperty Name="Games" Relationship="Self.PlayerTopGames" FromRole="PlayerLogin" ToRole="Game" />
+          <NavigationProperty Name="Matches" Relationship="DiceItUpModel.FK_Match_Profile" FromRole="PlayerLogin" ToRole="Match" />
+          <NavigationProperty Name="Matches1" Relationship="DiceItUpModel.FK_Match_SecondProfile" FromRole="PlayerLogin" ToRole="Match" />
         </EntityType>
         <EntityType Name="PlayerProfile">
           <Key>
@@ -739,7 +774,39 @@
             <End Role="Game" EntitySet="Games" />
             <End Role="PlayerLogin" EntitySet="PlayerLogins" />
           </AssociationSet>
+          <AssociationSet Name="FK_Match_Profile" Association="DiceItUpModel.FK_Match_Profile">
+            <End Role="PlayerLogin" EntitySet="PlayerLogins" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Match_SecondProfile" Association="DiceItUpModel.FK_Match_SecondProfile">
+            <End Role="PlayerLogin" EntitySet="PlayerLogins" />
+            <End Role="Match" EntitySet="Matches" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Match_Profile">
+          <End Type="DiceItUpModel.PlayerLogin" Role="PlayerLogin" Multiplicity="0..1" />
+          <End Type="DiceItUpModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerLogin">
+              <PropertyRef Name="player_id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="first_player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Match_SecondProfile">
+          <End Type="DiceItUpModel.PlayerLogin" Role="PlayerLogin" Multiplicity="0..1" />
+          <End Type="DiceItUpModel.Match" Role="Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlayerLogin">
+              <PropertyRef Name="player_id" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="second_player_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

@@ -88,15 +88,27 @@
 }
 
 .player-profile .card .match {
-    display: flex;
+    text-align: center;
     padding: 10px;
-    margin: 0px 20px;
-    justify-content: space-around;
-    border-bottom: 1px solid #cccccc;
+    width: 50%;
+    margin: 0;
 }
 
-.player-profile .card .match:last-child {
-    border-bottom: none;
+.player-profile .card .match img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 6px;
+}
+
+.player-profile .card .match p {
+    margin: 0px;
+}
+
+
+.player-profile .match-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .player-profile form {

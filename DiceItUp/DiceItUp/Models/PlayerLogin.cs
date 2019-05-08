@@ -23,6 +23,8 @@ namespace DiceItUp.Models
             this.PlayerRelationships1 = new HashSet<PlayerRelationship>();
             this.Genres = new HashSet<Genre>();
             this.Games = new HashSet<Game>();
+            this.Matches = new HashSet<Match>();
+            this.Matches1 = new HashSet<Match>();
         }
     
         public int player_id { get; set; }
@@ -42,5 +44,9 @@ namespace DiceItUp.Models
         public virtual ICollection<Genre> Genres { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Game> Games { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Match> Matches { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Match> Matches1 { get; set; }
     }
 }

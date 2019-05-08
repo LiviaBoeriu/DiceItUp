@@ -12,12 +12,13 @@
             </div>
         </div>
 
-        <div class="card" style="width: 24rem; margin-top: 40px;">
+        <div class="card match-list" style="width: 24rem; margin-top: 40px;">
             @foreach (var match in ViewBag.Matches)
             {
             <div class="match">
-                <span>Opponent: @match.second_player_id</span>
-                <span>Match state: @match.match_state</span>
+                <img src="~/Content/images/avatars/@match.SecondPlayer.PlayerProfile.avatar_path" class="match-avatar" align="middle">
+                <p> @match.SecondPlayer.PlayerProfile.first_name @match.SecondPlayer.PlayerProfile.last_name</p>
+                <p><b>@match.match_state</b></p>
             </div>
             }
         </div>
