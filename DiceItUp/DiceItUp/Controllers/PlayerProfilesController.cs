@@ -33,8 +33,9 @@ namespace DiceItUp.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             ViewBag.Matches = db.Matches.ToList().Where(row => row.first_player_id == id && row.match_state.ToLower() != "rejected");
+            ViewBag.Invitations = db.Matches.ToList().Where(row => row.second_player_id == id && row.match_state.ToLower() != "rejected");
             ViewData["Gender"] = playerProfile.gender.ToUpper() == "M" ? "Male" : "Female";
             return View(playerProfile);
         }
@@ -140,8 +141,24 @@ namespace DiceItUp.Controllers
         {
             PlayerProfile playerProfile = db.PlayerProfiles.Find(id);
 
-            ViewBag.Players = db.PlayerProfiles.ToList().Where(row => row.location_id == playerProfile.location_id && row.player_id != id);
-            
+            //ViewBag.Players = db.PlayerProfiles.ToList().Where(row => row.location_id == playerProfile.location_id && row.player_id != id);
+            var players = db.PlayerProfiles.ToList().Where(row => row.location_id == playerProfile.location_id && row.player_id != id);
+            var filteredPlayers = new List<PlayerProfile>();
+
+            foreach ( var player in players ) {
+                var match = db.Matches.ToList().Where(row => 
+                    (row.first_player_id == id && row.second_player_id == player.player_id) || 
+                    (row.first_player_id == player.player_id && row.second_player_id == id)
+                );
+
+                if (!match.Any())
+                {
+                    filteredPlayers.Add(player);
+                }
+            }
+
+            ViewBag.Players = filteredPlayers;
+
             return View(playerProfile);
         }
 
@@ -153,11 +170,23 @@ namespace DiceItUp.Controllers
             match.first_player_id = playerId;
             match.second_player_id = opponentId;
             match.match_state = "Pending";
-            match.first_player_state = "Accept";
+            match.first_player_state = "Accepted";
             match.second_player_state = "Pending";
 
             db.Matches.Add(match);
             db.SaveChanges();
+        }
+
+        [HttpPost]
+        public void Respond(int playerId, int opponentId, string response) {
+            var match = db.Matches.SingleOrDefault(row => row.first_player_id == opponentId && row.second_player_id == playerId);
+
+            if (response == "Accepted" || response == "Rejected") {
+                match.second_player_state = response;
+                match.match_state = response;
+
+                db.SaveChanges();
+            }
         }
     }
 }

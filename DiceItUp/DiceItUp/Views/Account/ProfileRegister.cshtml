@@ -32,9 +32,10 @@
 
     <div class="form-group row gender-form-group">
         <select class="form-control" name="location_id">
-            <option value="1" selected>Aalborg</option>
-            <option value="2">Viborg</option>
-            <option value="3">Copenhagen</option>
+            @foreach (var location in ViewBag.Locations)
+            {
+                <option value="@location.location_id" selected>@location.city </option>
+            }
         </select>
     </div>
 

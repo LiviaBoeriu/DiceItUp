@@ -16,6 +16,7 @@ namespace DiceItUp.Controllers
 
         // GET: Account
         public ActionResult Register(int? id) {
+            ViewBag.Locations = db.Locations.ToList(); 
             return View();
         }
 
