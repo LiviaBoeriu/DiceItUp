@@ -14,7 +14,7 @@ namespace DiceItUp.Controllers
     {
         private DiceItUpEntities1 db = new DiceItUpEntities1();
 
-        // GET: Account
+        // GET: Account/Register
         public ActionResult Register(int? id) {
             ViewBag.Locations = db.Locations.ToList(); 
             return View();

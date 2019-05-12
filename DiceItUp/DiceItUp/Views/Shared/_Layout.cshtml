@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Dice It Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="~/Content/css/Main.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
@@ -13,13 +13,34 @@
     <nav class="navbar navbar-light">
         <a class="navbar-brand" href="#">
             <p>Dice it up!</p>
-
         </a>
     </nav>
 
     <div class="container-fluid body-content">
         @RenderBody()
     </div>
+
+    <footer class="footer row">
+        <div class="col-sm footer-first-box">
+            <p>Hjælp</p>
+            <p>FAQ</p>
+            <p>Sprog</p>
+        </div>
+        <div class="col-sm footer-second-box">
+            <p>Om os</p>
+            <p>Privatlivspolitik</p>
+            <p>Vilkår og betingelser</p>
+        </div>
+        <div class="col-sm footer-third-box">
+            <span class="address">
+                Selma lagerløfs vej 300, <br />
+                9220 Aalborg Øst
+            </span>
+            <p class="phone">
+                +45 98765432
+            </p>
+        </div>
+    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
