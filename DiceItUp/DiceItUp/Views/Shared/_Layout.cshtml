@@ -15,12 +15,13 @@
 
         @Html.ActionLink("Dice It Up", "Register", "Account", null, new { @class = "navbar-brand" })
 
-        @if (id != null)
-        {
-            @Html.ActionLink("Match Arena", "Matchmaking", "PlayerProfiles", new { id = id }, new { @class = "nav-item" })
-        }
-
-        <span>Login placeholder</span>
+        <div class="nav-items">
+            @if (id != null)
+            {
+                @Html.ActionLink("Match Arena", "Matchmaking", "PlayerProfiles", new { id = id }, new { @class = "nav-item" })
+                @*@Html.ActionLink("Random", "Matchmaking", "PlayerProfiles", new { id = id }, new { @class = "nav-item" })*@
+            }
+        </div>
     </nav>
 
     <div class="container-fluid body-content">

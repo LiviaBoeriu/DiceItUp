@@ -190,7 +190,7 @@
 .ribbon {
     font-size: 16px !important;
     /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
-    width: 50%;
+    width: 33%;
     position: relative;
     background: #007bff;
     color: #fff;
@@ -244,9 +244,15 @@
     z-index: 1;
 }
 
+.nav-items {
+    position: absolute;
+    margin-left: 300px;
+}
+
 .nav-item {
-    font-size: 26px;
+    font-size: 22px;
     color: white;
+    margin-right: 30px;
 }
 
 .nav-item:hover {
