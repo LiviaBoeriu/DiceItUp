@@ -28,6 +28,14 @@
                     <p><b>@match.match_state</b></p>
                 </div>
             }
+            @foreach (var match in ViewBag.AcceptedMatches)
+            {
+                <div class="match">
+                    <img src="~/Content/images/avatars/@match.FirstPlayer.PlayerProfile.avatar_path" class="match-avatar" align="middle">
+                    <p> @match.FirstPlayer.PlayerProfile.first_name @match.FirstPlayer.PlayerProfile.last_name</p>
+                    @*<p><b>@match.match_state</b></p>*@
+                </div>
+            }
         </div>
 
         <div class="card match-list" style="width: 24rem; margin-top: 40px;">
@@ -43,10 +51,10 @@
                         {
                             <p><i class="far fa-check-circle"></i> <i class="far fa-times-circle"></i></p>
                         }
-                        else
+                        @*else
                         {
                             <p><b>Accepted</b></p>
-                        }
+                        }*@
                     }
                 </div>
             }

@@ -35,7 +35,8 @@ namespace DiceItUp.Controllers
             }
 
             ViewBag.Matches = db.Matches.ToList().Where(row => row.first_player_id == id && row.match_state.ToLower() != "rejected");
-            ViewBag.Invitations = db.Matches.ToList().Where(row => row.second_player_id == id && row.match_state.ToLower() != "rejected");
+            ViewBag.AcceptedMatches = db.Matches.ToList().Where(row => row.second_player_id == id && row.match_state.ToLower() == "accepted");
+            ViewBag.Invitations = db.Matches.ToList().Where(row => row.second_player_id == id && row.match_state.ToLower() != "rejected" && row.match_state.ToLower() != "accepted");
             ViewData["Gender"] = playerProfile.gender.ToUpper() == "M" ? "Male" : "Female";
             return View(playerProfile);
         }
