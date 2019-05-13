@@ -11,9 +11,8 @@
 </head>
 <body>
     <nav class="navbar navbar-light">
-        <a class="navbar-brand" href="#">
-            <p>Dice it up!</p>
-        </a>
+        <p>@Html.ActionLink("Dice It Up", "Register", "Account")</p>
+        @*<p>@Html.ActionLink("Match Arena", "Matchmaking", "PlayerProfiles", new { id = Url.RequestContext.RouteData.Values["id"] })</p>*@
     </nav>
 
     <div class="container-fluid body-content">
