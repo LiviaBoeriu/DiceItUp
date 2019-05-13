@@ -11,35 +11,39 @@
 </head>
 <body>
     <nav class="navbar navbar-light">
-        <p>@Html.ActionLink("Dice It Up", "Register", "Account")</p>
-        @*<p>@Html.ActionLink("Match Arena", "Matchmaking", "PlayerProfiles", new { id = Url.RequestContext.RouteData.Values["id"] })</p>*@
+        @{ var id = Url.RequestContext.RouteData.Values["id"]; }
+
+        @Html.ActionLink("Dice It Up", "Register", "Account", null, new { @class = "navbar-brand" })
+
+        @if (id != null)
+        {
+            @Html.ActionLink("Match Arena", "Matchmaking", "PlayerProfiles", new { id = id }, new { @class = "nav-item" })
+        }
+
+        <span>Login placeholder</span>
     </nav>
 
     <div class="container-fluid body-content">
         @RenderBody()
     </div>
 
-    <footer class="footer row">
-        <div class="col-sm footer-first-box">
+    <div class="footer row">
+        <div class="col-4 footer-box">
             <p>Hjælp</p>
             <p>FAQ</p>
             <p>Sprog</p>
         </div>
-        <div class="col-sm footer-second-box">
+        <div class="col-4 footer-box">
             <p>Om os</p>
             <p>Privatlivspolitik</p>
             <p>Vilkår og betingelser</p>
         </div>
-        <div class="col-sm footer-third-box">
-            <span class="address">
-                Selma lagerløfs vej 300, <br />
-                9220 Aalborg Øst
-            </span>
-            <p class="phone">
-                +45 98765432
-            </p>
+        <div class="col-4 footer-box">
+            <p class="address-name"> Selma lagerløfs vej 300,</p>
+            <p class="address-code">9220 Aalborg Øst</p>
+            <p class="phone"> +45 98765432</p>
         </div>
-    </footer>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
