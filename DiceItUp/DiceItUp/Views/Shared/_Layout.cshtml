@@ -13,7 +13,10 @@
     <nav class="navbar navbar-light">
         @{ var id = Url.RequestContext.RouteData.Values["id"]; }
 
-        @Html.ActionLink("Dice It Up", "Register", "Account", null, new { @class = "navbar-brand" })
+        <div class="nav-title">
+            @Html.ActionLink("Dice It Up", "Register", "Account", null, new { @class = "navbar-brand" })
+            <img src="~/Content/images/dice.png" class="logo" align="middle">
+        </div>
 
         <div class="nav-items">
             @if (id != null)

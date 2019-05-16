@@ -278,3 +278,8 @@
 .footer-box:last-child {
     border-right: none;
 }
+
+.logo {
+    max-width: 20%;
+    height: auto;
+}

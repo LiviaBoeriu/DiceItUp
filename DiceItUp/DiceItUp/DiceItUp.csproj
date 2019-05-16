@@ -199,6 +199,7 @@
     <Content Include="Content\images\avatars\steve.png" />
     <Content Include="Content\images\blur-board-game-cards-776657.jpg" />
     <Content Include="Content\images\board-game.jpg" />
+    <Content Include="Content\images\dice.png" />
     <Content Include="Content\images\fusball.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
