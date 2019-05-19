@@ -79,6 +79,7 @@
           <Property Name="player_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="token" Type="nchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="PlayerProfile">
           <Key>
@@ -94,15 +95,6 @@
           <Property Name="description" Type="varchar" MaxLength="250" />
           <Property Name="feedback" Type="decimal" Precision="3" Scale="2" />
           <Property Name="avatar_path" Type="varchar" MaxLength="60" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PlayerRelationship">
-          <Key>
-            <PropertyRef Name="requester_player_id" />
-            <PropertyRef Name="respondent_player_id" />
-          </Key>
-          <Property Name="requester_player_id" Type="int" Nullable="false" />
-          <Property Name="respondent_player_id" Type="int" Nullable="false" />
-          <Property Name="relationship_state" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="PlayerTopGames">
           <Key>
@@ -203,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PlayerGam__genre__619B8048">
+        <Association Name="FK__PlayerGam__genre__160F4887">
           <End Role="Genre" Type="Self.Genre" Multiplicity="1" />
           <End Role="PlayerGamePreferences" Type="Self.PlayerGamePreferences" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PlayerGam__playe__60A75C0F">
+        <Association Name="FK__PlayerGam__playe__17036CC0">
           <End Role="PlayerLogin" Type="Self.PlayerLogin" Multiplicity="1" />
           <End Role="PlayerGamePreferences" Type="Self.PlayerGamePreferences" Multiplicity="*" />
           <ReferentialConstraint>
@@ -263,31 +255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PlayerRel__reque__6C190EBB">
-          <End Role="PlayerLogin" Type="Self.PlayerLogin" Multiplicity="1" />
-          <End Role="PlayerRelationship" Type="Self.PlayerRelationship" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlayerLogin">
-              <PropertyRef Name="player_id" />
-            </Principal>
-            <Dependent Role="PlayerRelationship">
-              <PropertyRef Name="requester_player_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PlayerRel__respo__6D0D32F4">
-          <End Role="PlayerLogin" Type="Self.PlayerLogin" Multiplicity="1" />
-          <End Role="PlayerRelationship" Type="Self.PlayerRelationship" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlayerLogin">
-              <PropertyRef Name="player_id" />
-            </Principal>
-            <Dependent Role="PlayerRelationship">
-              <PropertyRef Name="respondent_player_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PlayerTop__game___656C112C">
+        <Association Name="FK__PlayerTop__game___19DFD96B">
           <End Role="Game" Type="Self.Game" Multiplicity="1" />
           <End Role="PlayerTopGames" Type="Self.PlayerTopGames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -299,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PlayerTop__playe__6477ECF3">
+        <Association Name="FK__PlayerTop__playe__1AD3FDA4">
           <End Role="PlayerLogin" Type="Self.PlayerLogin" Multiplicity="1" />
           <End Role="PlayerTopGames" Type="Self.PlayerTopGames" Multiplicity="*" />
           <ReferentialConstraint>
@@ -345,7 +313,6 @@
           <EntitySet Name="PlayerGamePreferences" EntityType="Self.PlayerGamePreferences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlayerLogin" EntityType="Self.PlayerLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlayerProfile" EntityType="Self.PlayerProfile" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PlayerRelationship" EntityType="Self.PlayerRelationship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlayerTopGames" EntityType="Self.PlayerTopGames" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProfileTitle" EntityType="Self.ProfileTitle" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Game__genre_id__5629CD9C" Association="Self.FK__Game__genre_id__5629CD9C">
@@ -376,11 +343,11 @@
             <End Role="PlayerLogin" EntitySet="PlayerLogin" />
             <End Role="MeetupParticipant" EntitySet="MeetupParticipant" />
           </AssociationSet>
-          <AssociationSet Name="FK__PlayerGam__genre__619B8048" Association="Self.FK__PlayerGam__genre__619B8048">
+          <AssociationSet Name="FK__PlayerGam__genre__160F4887" Association="Self.FK__PlayerGam__genre__160F4887">
             <End Role="Genre" EntitySet="Genre" />
             <End Role="PlayerGamePreferences" EntitySet="PlayerGamePreferences" />
           </AssociationSet>
-          <AssociationSet Name="FK__PlayerGam__playe__60A75C0F" Association="Self.FK__PlayerGam__playe__60A75C0F">
+          <AssociationSet Name="FK__PlayerGam__playe__17036CC0" Association="Self.FK__PlayerGam__playe__17036CC0">
             <End Role="PlayerLogin" EntitySet="PlayerLogin" />
             <End Role="PlayerGamePreferences" EntitySet="PlayerGamePreferences" />
           </AssociationSet>
@@ -396,19 +363,11 @@
             <End Role="ProfileTitle" EntitySet="ProfileTitle" />
             <End Role="PlayerProfile" EntitySet="PlayerProfile" />
           </AssociationSet>
-          <AssociationSet Name="FK__PlayerRel__reque__6C190EBB" Association="Self.FK__PlayerRel__reque__6C190EBB">
-            <End Role="PlayerLogin" EntitySet="PlayerLogin" />
-            <End Role="PlayerRelationship" EntitySet="PlayerRelationship" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PlayerRel__respo__6D0D32F4" Association="Self.FK__PlayerRel__respo__6D0D32F4">
-            <End Role="PlayerLogin" EntitySet="PlayerLogin" />
-            <End Role="PlayerRelationship" EntitySet="PlayerRelationship" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PlayerTop__game___656C112C" Association="Self.FK__PlayerTop__game___656C112C">
+          <AssociationSet Name="FK__PlayerTop__game___19DFD96B" Association="Self.FK__PlayerTop__game___19DFD96B">
             <End Role="Game" EntitySet="Game" />
             <End Role="PlayerTopGames" EntitySet="PlayerTopGames" />
           </AssociationSet>
-          <AssociationSet Name="FK__PlayerTop__playe__6477ECF3" Association="Self.FK__PlayerTop__playe__6477ECF3">
+          <AssociationSet Name="FK__PlayerTop__playe__1AD3FDA4" Association="Self.FK__PlayerTop__playe__1AD3FDA4">
             <End Role="PlayerLogin" EntitySet="PlayerLogin" />
             <End Role="PlayerTopGames" EntitySet="PlayerTopGames" />
           </AssociationSet>
@@ -511,12 +470,11 @@
           <NavigationProperty Name="Meetups" Relationship="Self.FK__Meetup__player_i__5BE2A6F2" FromRole="PlayerLogin" ToRole="Meetup" />
           <NavigationProperty Name="MeetupParticipants" Relationship="Self.FK__MeetupPar__playe__693CA210" FromRole="PlayerLogin" ToRole="MeetupParticipant" />
           <NavigationProperty Name="PlayerProfile" Relationship="Self.FK__PlayerPro__playe__4F7CD00D" FromRole="PlayerLogin" ToRole="PlayerProfile" />
-          <NavigationProperty Name="PlayerRelationships" Relationship="Self.FK__PlayerRel__reque__6C190EBB" FromRole="PlayerLogin" ToRole="PlayerRelationship" />
-          <NavigationProperty Name="PlayerRelationships1" Relationship="Self.FK__PlayerRel__respo__6D0D32F4" FromRole="PlayerLogin" ToRole="PlayerRelationship" />
           <NavigationProperty Name="Genres" Relationship="Self.PlayerGamePreferences" FromRole="PlayerLogin" ToRole="Genre" />
           <NavigationProperty Name="Games" Relationship="Self.PlayerTopGames" FromRole="PlayerLogin" ToRole="Game" />
           <NavigationProperty Name="Matches" Relationship="DiceItUpModel.FK_Match_Profile" FromRole="PlayerLogin" ToRole="Match" />
           <NavigationProperty Name="Matches1" Relationship="DiceItUpModel.FK_Match_SecondProfile" FromRole="PlayerLogin" ToRole="Match" />
+          <Property Name="token" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="PlayerProfile">
           <Key>
@@ -535,17 +493,6 @@
           <NavigationProperty Name="Location" Relationship="Self.FK__PlayerPro__locat__5070F446" FromRole="PlayerProfile" ToRole="Location" />
           <NavigationProperty Name="PlayerLogin" Relationship="Self.FK__PlayerPro__playe__4F7CD00D" FromRole="PlayerProfile" ToRole="PlayerLogin" />
           <NavigationProperty Name="ProfileTitle" Relationship="Self.FK__PlayerPro__profi__5165187F" FromRole="PlayerProfile" ToRole="ProfileTitle" />
-        </EntityType>
-        <EntityType Name="PlayerRelationship">
-          <Key>
-            <PropertyRef Name="requester_player_id" />
-            <PropertyRef Name="respondent_player_id" />
-          </Key>
-          <Property Name="requester_player_id" Type="Int32" Nullable="false" />
-          <Property Name="respondent_player_id" Type="Int32" Nullable="false" />
-          <Property Name="relationship_state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PlayerLogin" Relationship="Self.FK__PlayerRel__reque__6C190EBB" FromRole="PlayerRelationship" ToRole="PlayerLogin" />
-          <NavigationProperty Name="PlayerLogin1" Relationship="Self.FK__PlayerRel__respo__6D0D32F4" FromRole="PlayerRelationship" ToRole="PlayerLogin" />
         </EntityType>
         <EntityType Name="ProfileTitle">
           <Key>
@@ -663,30 +610,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PlayerRel__reque__6C190EBB">
-          <End Role="PlayerLogin" Type="Self.PlayerLogin" Multiplicity="1" />
-          <End Role="PlayerRelationship" Type="Self.PlayerRelationship" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlayerLogin">
-              <PropertyRef Name="player_id" />
-            </Principal>
-            <Dependent Role="PlayerRelationship">
-              <PropertyRef Name="requester_player_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PlayerRel__respo__6D0D32F4">
-          <End Role="PlayerLogin" Type="Self.PlayerLogin" Multiplicity="1" />
-          <End Role="PlayerRelationship" Type="Self.PlayerRelationship" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PlayerLogin">
-              <PropertyRef Name="player_id" />
-            </Principal>
-            <Dependent Role="PlayerRelationship">
-              <PropertyRef Name="respondent_player_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PlayerPro__profi__5165187F">
           <End Role="ProfileTitle" Type="Self.ProfileTitle" Multiplicity="0..1" />
           <End Role="PlayerProfile" Type="Self.PlayerProfile" Multiplicity="*" />
@@ -716,7 +639,6 @@
           <EntitySet Name="MeetupParticipants" EntityType="Self.MeetupParticipant" />
           <EntitySet Name="PlayerLogins" EntityType="Self.PlayerLogin" />
           <EntitySet Name="PlayerProfiles" EntityType="Self.PlayerProfile" />
-          <EntitySet Name="PlayerRelationships" EntityType="Self.PlayerRelationship" />
           <EntitySet Name="ProfileTitles" EntityType="Self.ProfileTitle" />
           <AssociationSet Name="FK__Game__genre_id__5629CD9C" Association="Self.FK__Game__genre_id__5629CD9C">
             <End Role="Genre" EntitySet="Genres" />
@@ -753,14 +675,6 @@
           <AssociationSet Name="FK__PlayerPro__playe__4F7CD00D" Association="Self.FK__PlayerPro__playe__4F7CD00D">
             <End Role="PlayerLogin" EntitySet="PlayerLogins" />
             <End Role="PlayerProfile" EntitySet="PlayerProfiles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PlayerRel__reque__6C190EBB" Association="Self.FK__PlayerRel__reque__6C190EBB">
-            <End Role="PlayerLogin" EntitySet="PlayerLogins" />
-            <End Role="PlayerRelationship" EntitySet="PlayerRelationships" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PlayerRel__respo__6D0D32F4" Association="Self.FK__PlayerRel__respo__6D0D32F4">
-            <End Role="PlayerLogin" EntitySet="PlayerLogins" />
-            <End Role="PlayerRelationship" EntitySet="PlayerRelationships" />
           </AssociationSet>
           <AssociationSet Name="FK__PlayerPro__profi__5165187F" Association="Self.FK__PlayerPro__profi__5165187F">
             <End Role="ProfileTitle" EntitySet="ProfileTitles" />
@@ -880,6 +794,7 @@
           <EntitySetMapping Name="PlayerLogins">
             <EntityTypeMapping TypeName="DiceItUpModel.PlayerLogin">
               <MappingFragment StoreEntitySet="PlayerLogin">
+                <ScalarProperty Name="token" ColumnName="token" />
                 <ScalarProperty Name="player_id" ColumnName="player_id" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -899,15 +814,6 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="feedback" ColumnName="feedback" />
                 <ScalarProperty Name="avatar_path" ColumnName="avatar_path" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PlayerRelationships">
-            <EntityTypeMapping TypeName="DiceItUpModel.PlayerRelationship">
-              <MappingFragment StoreEntitySet="PlayerRelationship">
-                <ScalarProperty Name="requester_player_id" ColumnName="requester_player_id" />
-                <ScalarProperty Name="respondent_player_id" ColumnName="respondent_player_id" />
-                <ScalarProperty Name="relationship_state" ColumnName="relationship_state" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

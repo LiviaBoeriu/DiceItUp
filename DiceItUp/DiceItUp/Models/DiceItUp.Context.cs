@@ -33,7 +33,6 @@ namespace DiceItUp.Models
         public virtual DbSet<MeetupParticipant> MeetupParticipants { get; set; }
         public virtual DbSet<PlayerLogin> PlayerLogins { get; set; }
         public virtual DbSet<PlayerProfile> PlayerProfiles { get; set; }
-        public virtual DbSet<PlayerRelationship> PlayerRelationships { get; set; }
         public virtual DbSet<ProfileTitle> ProfileTitles { get; set; }
     }
 }

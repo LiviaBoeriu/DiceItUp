@@ -13,6 +13,9 @@
     margin-right: 0 !important;
 }
 
+.dropdown-toggle::after {
+    color: white;
+}
 /* _Layout */
 .navbar {
     padding: 0px 50px;
@@ -199,45 +202,45 @@
     margin: 2em auto 3em; /* Based on 24px vertical rhythm. 48px bottom margin - normally 24 but the ribbon 'graphics' take up 24px themselves so we double it. */
 }
 
-.ribbon:before, .ribbon:after {
-    content: "";
-    position: absolute;
-    display: block;
-    bottom: -1em;
-    border: 1.5em solid #006fe6;
-    z-index: -1;
-}
+    .ribbon:before, .ribbon:after {
+        content: "";
+        position: absolute;
+        display: block;
+        bottom: -1em;
+        border: 1.5em solid #006fe6;
+        z-index: -1;
+    }
 
-.ribbon:before {
-    left: -2em;
-    border-right-width: 1.5em;
-    border-left-color: transparent;
-}
+    .ribbon:before {
+        left: -2em;
+        border-right-width: 1.5em;
+        border-left-color: transparent;
+    }
 
-.ribbon:after {
-    right: -2em;
-    border-left-width: 1.5em;
-    border-right-color: transparent;
-}
+    .ribbon:after {
+        right: -2em;
+        border-left-width: 1.5em;
+        border-right-color: transparent;
+    }
 
-.ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
-    content: "";
-    position: absolute;
-    display: block;
-    border-style: solid;
-    border-color: #004998 transparent transparent transparent;
-    bottom: -1em;
-}
+    .ribbon .ribbon-content:before, .ribbon .ribbon-content:after {
+        content: "";
+        position: absolute;
+        display: block;
+        border-style: solid;
+        border-color: #004998 transparent transparent transparent;
+        bottom: -1em;
+    }
 
-.ribbon .ribbon-content:before {
-    left: 0;
-    border-width: 1em 0 0 1em;
-}
+    .ribbon .ribbon-content:before {
+        left: 0;
+        border-width: 1em 0 0 1em;
+    }
 
-.ribbon .ribbon-content:after {
-    right: 0;
-    border-width: 1em 1em 0 0;
-}
+    .ribbon .ribbon-content:after {
+        right: 0;
+        border-width: 1em 1em 0 0;
+    }
 
 .non-semantic-protector {
     position: relative;
@@ -255,18 +258,18 @@
     margin-right: 30px;
 }
 
-.nav-item:hover {
-    color: white;
-}
+    .nav-item:hover {
+        color: white;
+    }
 
 .footer {
-    background-color: f2f2f2;
+    background-color: #f2f2f2;
     padding: 30px 0px;
 }
 
-.footer p {
-    color: black;
-}
+    .footer p {
+        color: black;
+    }
 
 .footer-box {
     display: flex;
@@ -275,11 +278,19 @@
     border-right: 1px solid black;
 }
 
-.footer-box:last-child {
-    border-right: none;
-}
+    .footer-box:last-child {
+        border-right: none;
+    }
 
 .logo {
     max-width: 20%;
     height: auto;
+}
+
+.fa-user {
+    color: white;
+}
+
+.dropdown-menu {
+    left: -100px;
 }

@@ -173,9 +173,6 @@
     <Compile Include="Models\PlayerProfile.cs">
       <DependentUpon>DiceItUp.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\PlayerRelationship.cs">
-      <DependentUpon>DiceItUp.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ProfileTitle.cs">
       <DependentUpon>DiceItUp.tt</DependentUpon>
     </Compile>

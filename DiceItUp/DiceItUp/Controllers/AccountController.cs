@@ -26,6 +26,7 @@ namespace DiceItUp.Controllers
         {
             if (ModelState.IsValid)
             {
+                // set token
                 db.PlayerLogins.Add(playerLogin);
                 db.SaveChanges();
                 return RedirectToAction("Register", new { id = playerLogin.player_id });
@@ -60,6 +61,27 @@ namespace DiceItUp.Controllers
         public PartialViewResult ProfileRegister()
         {
             return PartialView("ProfileRegister", new PlayerProfile());
+        }
+
+        [HttpPost]
+        public int Login(String email, String password)
+        {
+            // check if there is an user with those credetials
+
+            // IF TRUE => 
+            // set token
+            // RedirectToAction(Details, PlayerProfiles, new id)
+
+            // IF FALSE => RedirectToAction(Register, Account)
+            var user = db.PlayerLogins.FirstOrDefault(row => row.email == email && row.password == password);
+
+            if (user != null)
+            {
+                return user.player_id;
+            }
+            else {
+                return 0;
+            }
         }
     }
 }

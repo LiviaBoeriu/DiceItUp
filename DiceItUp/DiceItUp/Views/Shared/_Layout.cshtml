@@ -25,6 +25,27 @@
                 @*@Html.ActionLink("Random", "Matchmaking", "PlayerProfiles", new { id = id }, new { @class = "nav-item" })*@
             }
         </div>
+
+        @if (id == null)
+        {
+            <form class="form-inline my-2 my-lg-0" id="loginForm">
+                <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Email">
+                <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">
+                <button class="btn btn-outline-light my-2 my-sm-0" id="loginButton">Login</button>
+            </form>
+        }
+        else
+        {
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/PlayerProfiles/Details/@Url.RequestContext.RouteData.Values["id"]">View Profile</a>
+                    <a class="dropdown-item" href="#" id="logoutButton">Log out</a>
+                </div>
+            </div>
+        }
     </nav>
 
     <div class="container-fluid body-content">
@@ -53,5 +74,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        var logoutButton = document.getElementById('logoutButton');
+        var loginButton = document.getElementById("loginButton");
+        var loginForm = document.getElementById("loginForm");
+
+        function login(email, password) {
+            var postData = {
+                email: email,
+                password: password,
+            }
+
+            $.post({
+                url: "/account/login",
+                data: postData,
+                success: function (res) {
+                    if (res !== '0') {
+                        window.location.href = window.location.href + 'playerprofiles/details/' + res;
+                    }
+                }
+            });
+        }
+
+        function logout() {
+            window.location.href = window.location.origin;
+        }
+
+        if (logoutButton) {
+            logoutButton.href = window.location.origin
+        }
+
+        if (loginButton) {
+            loginButton.addEventListener("click", function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                var inputs = $(loginForm).find('input');
+                login(inputs[0].value, inputs[1].value)
+            });
+        }
+    </script>
 </body>
 </html>

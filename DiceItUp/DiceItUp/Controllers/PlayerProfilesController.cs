@@ -31,7 +31,7 @@ namespace DiceItUp.Controllers
             PlayerProfile playerProfile = db.PlayerProfiles.Find(id);
             if (playerProfile == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Edit", new { id = id });
             }
 
             ViewBag.Matches = db.Matches.ToList().Where(row => row.first_player_id == id && row.match_state.ToLower() != "rejected");

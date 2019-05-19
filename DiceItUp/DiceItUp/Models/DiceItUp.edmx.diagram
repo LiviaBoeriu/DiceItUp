@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="DiceItUpModel.MeetupParticipant" Width="1.5" PointX="10.5" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DiceItUpModel.PlayerLogin" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DiceItUpModel.PlayerProfile" Width="1.5" PointX="13.5" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiceItUpModel.PlayerRelationship" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DiceItUpModel.ProfileTitle" Width="1.5" PointX="11.25" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="DiceItUpModel.FK__Game__genre_id__5629CD9C" ManuallyRouted="false" />
         <AssociationConnector Association="DiceItUpModel.FK__Meetup__game_id__59FA5E80" ManuallyRouted="false" />
@@ -24,8 +23,6 @@
         <AssociationConnector Association="DiceItUpModel.FK__MeetupPar__meetu__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="DiceItUpModel.FK__MeetupPar__playe__693CA210" ManuallyRouted="false" />
         <AssociationConnector Association="DiceItUpModel.FK__PlayerPro__playe__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="DiceItUpModel.FK__PlayerRel__reque__6C190EBB" ManuallyRouted="false" />
-        <AssociationConnector Association="DiceItUpModel.FK__PlayerRel__respo__6D0D32F4" ManuallyRouted="false" />
         <AssociationConnector Association="DiceItUpModel.FK__PlayerPro__profi__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="DiceItUpModel.PlayerGamePreferences" ManuallyRouted="false" />
         <AssociationConnector Association="DiceItUpModel.PlayerTopGames" ManuallyRouted="false" />
