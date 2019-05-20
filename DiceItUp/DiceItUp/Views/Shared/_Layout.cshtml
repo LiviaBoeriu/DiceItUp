@@ -30,8 +30,8 @@
         {
             <form class="form-inline my-2 my-lg-0" id="loginForm">
                 <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Email">
-                <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password">
-                <button class="btn btn-outline-light my-2 my-sm-0" id="loginButton">Login</button>
+                <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Adgangskode">
+                <button class="btn btn-outline-light my-2 my-sm-0" id="loginButton">Log ind</button>
             </form>
         }
         else
@@ -41,8 +41,8 @@
                     <i class="fas fa-user"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/PlayerProfiles/Details/@Url.RequestContext.RouteData.Values["id"]">View Profile</a>
-                    <a class="dropdown-item" href="#" id="logoutButton">Log out</a>
+                    <a class="dropdown-item" href="/PlayerProfiles/Details/@Url.RequestContext.RouteData.Values["id"]">Vis profil</a>
+                    <a class="dropdown-item" href="#" id="logoutButton">Log ud</a>
                 </div>
             </div>
         }

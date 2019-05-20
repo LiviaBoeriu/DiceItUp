@@ -1,10 +1,13 @@
 ﻿<div class="register-template">
     <div class="register-description">
-        <h4>Welcome to Dice It Up!</h4>
-        <p>The go-to place for all things boardgame in one easy-to-use website.</p>
-        <p>Here it is up to you to decide: do you want to join a group of people to play? Or perhaps interested in creating a meetup yourself? Head to the Meetups section, where you can create and search meetups.</p>
-        <p>Or would you rather find individuals who share the same interest in boardgames as you? Click on the Matchmaking section, and try your luck with our special matchmaking dices to meet new game friends!</p>
-        <p>Happy gaming!</p>
+        <h4>
+            Velkommen til Dice It Up!
+        </h4>
+        <p>Dit go-to websted for at finde brætspillere at mødes med!</p>
+        <p>
+            Her er det op til dig at bestemme: Er du interesseret i at deltage i spil-events oprettet af andre spillere, hvor mange nye bekendskaber kan opstå? Eller er du måske interesseret i at være vært for en spilaften selv? Så er Meetups måske noget for dig! Her kan du oprette og søge efter meetups nær dig, og møde masser af nye medspillere.
+        </p>
+        <p>Eller vil du hellere finde individuelle spillere som deler de samme interesser i brætspil som dig? Kllik på sektionen Matchmaking og prøv lykken med vores matchmaking-terninger! Her kan du matche med andre spillere, og få nye spil-venner.</p>
     </div>
 
     <div class="register-form">
@@ -12,10 +15,17 @@
             if (Url.RequestContext.RouteData.Values["id"] == null)
             {
                 Html.RenderPartial("LoginRegister");
-            } else
+            }
+            else
             {
                 Html.RenderPartial("ProfileRegister");
             }
         }
     </div>
 </div>
+
+
+
+
+
+
